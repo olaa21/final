@@ -80,7 +80,7 @@ def csv_to_html(csv_filename, output_folder):
 
                 html_content += f"""
                 <div class="athlete-card">
-                    <img src="../images/profiles/{profile_pic}" alt="Profile picture of {name}">
+                    <img src="../Images/profiles/{profile_pic}" alt="Profile picture of {name}">
                     <h3>{name}</h3>
                     <dl>
                         <dt>Place:</dt><dd>{place}</dd>
@@ -189,12 +189,12 @@ def select_random_photos(folder_path, num_photos=25):
     # Filter out non-image files if necessary (assuming .jpg, .png, etc.)
     image_files = [f for f in all_files if f.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
     
-    # Ensure we have enough images to select
+    # Ensure we have enough Images to select
     if len(image_files) < num_photos:
         return ""
-        raise ValueError(f"Not enough images in the folder. Found {len(image_files)} images.")
+        raise ValueError(f"Not enough Images in the folder. Found {len(image_files)} Images.")
     
-    # Select 12 random images
+    # Select 12 random Images
     return random.sample(image_files, num_photos)
 
 # Step 3: Generate HTML image tags
@@ -209,8 +209,8 @@ def generate_image_tags(image_files, folder_path):
 # Putting it all together
 def create_meet_image_gallery(url):
     meet_id = extract_meet_id(url)
-    # Define the folder path for images based on the meet ID
-    folder_path = f'images/meets/{meet_id}/'
+    # Define the folder path for Images based on the meet ID
+    folder_path = f'Images/meets/{meet_id}/'
 
     # print(f"The folder path is {folder_path}")
     
