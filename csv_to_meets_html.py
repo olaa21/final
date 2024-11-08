@@ -26,6 +26,8 @@ def csv_to_html(csv_filename, output_folder):
         <title>{link_text}</title>
         <link rel="stylesheet" href="../css/reset.css">
         <link rel="stylesheet" href="../css/style.css">
+        <link href="../dist/css/lightbox.css" rel="stylesheet" />
+        <script src="../dist/js/lightbox-plus-jquery.js"></script>
         </head>
         <body>
         <a href="#main">Skip to Main Content</a>
@@ -80,7 +82,9 @@ def csv_to_html(csv_filename, output_folder):
 
                 html_content += f"""
                 <div class="athlete-card">
-                    <img src="../Images/profile/{profile_pic}" alt="Profile picture of {name}">
+                    <a href="../Images/profile/{profile_pic}" data-lightbox="gallery" data-title="{name}">
+                        <img src="../Images/profile/{profile_pic}" alt="Profile picture of {name}">
+                    </a>
                     <h3>{name}</h3>
                     <dl>
                         <dt>Place:</dt><dd>{place}</dd>
@@ -98,6 +102,7 @@ def csv_to_html(csv_filename, output_folder):
         html_content += """
             <section id="gallery">
                 <h2>Gallery</h2>
+                <button class = "FilterButton">Click Me</button>
                 <div class="gallery-grid">
         """
         
@@ -130,7 +135,7 @@ def csv_to_html(csv_filename, output_folder):
                     panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
                 });
             </script>
-
+        <script src="../dist/js/filter.js"></script>
         </body>
         </html>
         """
@@ -203,7 +208,7 @@ def generate_image_tags(image_files, folder_path):
     for img in image_files:
         img_path = os.path.join(folder_path, img)
         # print(f"The image_path is {img_path}")
-        img_tags.append(f'<img src=../{img_path} width = "200" alt="">')
+        img_tags.append(f'<a href="../{img_path}" target="_blank" data-lightbox="gallery"><img src="../{img_path}" width="200" alt=""></a>')
     return "\n".join(img_tags)
 
 # Putting it all together
@@ -307,3 +312,4 @@ meets_folder = "meets"
 
 # Generate the homepage with navigation
 generate_nav_from_meets_folder(meets_folder)
+

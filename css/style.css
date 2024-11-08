@@ -30,7 +30,7 @@
     :root {
         --bg-color: #222;
         --text-color: #f4f4f4;
-        --nav-bg-color: #c44601;
+        --nav-bg-color: #b51963;
         --link-color: white;
         --link-hover-color: #0056b3;
         --header-link-color: #007BFF;
@@ -127,7 +127,7 @@ a[href="#main"]:focus {
     display: block;
     padding: 10px 0;
     text-decoration: none;
-    color: #007BFF;
+    color: #2546f0;
 }
 
 .panel a:hover {
@@ -326,6 +326,10 @@ table tr td {
     margin-bottom: 1rem;
 }
 
+#gallery{
+    text-align: center;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Two items per row */
@@ -425,4 +429,134 @@ footer a {
 
 .fab:hover {
     background-color: var(--link-hover-color);
+}
+
+.filter{
+    filter:grayscale();
+    opacity: .5;
+}
+
+@media (min-width: 768px) {
+    /* Tablet view: adjust layout slightly for larger screens */
+    nav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .athlete-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .table-container {
+        display: flex;
+        justify-content: center; /* Centers the table horizontally */
+        width: 100%;             /* Ensures the container takes up full width */
+        text-align: center;
+    }
+
+    table{
+        text-align: center; 
+        display: inline-table;
+        justify-content: center;
+       
+    }
+
+    table th, table td {
+        padding: 8px 12px;     /* Adds padding for readability */
+        text-align: center;    /* Centers text within cells */
+        border: 1px solid #ddd; /* Adds borders to cells */
+    }
+
+    #team-results h2 {
+        text-align: center; /* Center text */
+        font-size: 1.5em; /* Adjust font size as needed */
+        font-weight: bold; /* Optional: make it bold */
+        margin: 20px 0; /* Add space above and below */
+    }
+
+    .gallery-grid {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 10px; /* Adds spacing between images */
+        padding: 10px;
+        background-color: var(--gallery-bg-color);
+    }
+    
+    .gallery-grid img {
+        flex: 0 0 auto; /* Ensures images do not shrink */
+        max-height: 200px; /* Set a fixed height for consistency */
+        border-radius: 8px;
+        background-color: var(--gallery-item-bg);
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;   /* Add some padding if needed */
+    }
+
+    
+}
+
+@media (min-width: 1024px) {
+    /* Desktop view: larger grid and spacing for better visibility */
+    nav {
+        background-color: var(--nav-bg-color);
+        position: sticky;
+        z-index: 1000;
+        top: 0;
+
+        display: block; /* Make navigation fully visible without an accordion */
+    }
+
+    nav a{
+        margin-right: 15px;
+    }
+
+    .panel {
+        display: flex; /* Show all links in a horizontal row for desktop */
+    }
+
+    .athlete-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .summary {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--summary-bg-color);
+    }
+
+    header h1, header h2 {
+        font-size: 2em;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    /* Disable transitions */
+    * {
+        transition: none !important;
+    }
+
+    /* Disable animations */
+    .athlete-card, .gallery-grid img, .lightbox {
+        animation: none !important;
+    }
+
+    /* Any additional adjustments for reduced motion */
+    .lightbox {
+        /* Specific styles for lightbox if needed */
+    }
 }
