@@ -161,47 +161,6 @@ nav ul li a:hover {
     background: var(--link-hover-color);
 }
 
-/* Tabs style */
-nav ul.tabs {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul.tabs li {
-    flex: 1; /* Make tabs stretch equally */
-    margin: 0;
-}
-
-nav ul.tabs li a {
-    text-align: center;
-    padding: 10px;
-    display: block;
-    background: var(--nav-bg-color);
-    color: var(--link-color);
-    text-decoration: none;
-    border-radius: 5px 5px 0 0;
-    transition: background 0.3s ease-in-out;
-}
-
-nav ul.tabs li a:hover, nav ul.tabs li a.active {
-    background: var(--nav-bg-color);
-}
-
-/* Tab content */
-.tab-content {
-    display: none; /* Hide all content initially */
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 0 5px 5px 5px;
-    background-color: var(--bg-color);
-    margin-top: -5px;
-}
-
-.tab-content.active {
-    display: block;
-}
 
 /* Header Styling */
 header h1, header h2 {
@@ -547,16 +506,10 @@ footer a {
 @media (prefers-reduced-motion: reduce) {
     /* Disable transitions */
     * {
-        transition: none !important;
+        transition: none;
+        /* background-color: red; Test to see if this applies */
     }
-
-    /* Disable animations */
-    .athlete-card, .gallery-grid img, .lightbox {
-        animation: none !important;
-    }
-
-    /* Any additional adjustments for reduced motion */
-    .lightbox {
-        /* Specific styles for lightbox if needed */
+    .athlete-card, .athlete-card:hover, .athlete-grid, .gallery-grid img, .lightbox {
+        animation: none;
     }
 }
